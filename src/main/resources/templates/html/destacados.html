@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang= "es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout= "http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate= "/layout/layout" style="height: auto;">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css.map">
+    <script type="text/javascript" src="plugins/popper/popper.js"></script>
+    <script type="text/javascript" src="plugins/popper/popper.js.map"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js.map"></script>
+  	<!-- my resources -->
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap/stylesheet.css">
+  	<script type="text/javascript" src="plugins/bootstrap/js/script.js"></script>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+<div class="content justify-content-center" id="load-icon">
+<div  class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+</div>
+
+
+<div class="container justify-content-center" style="height:100vh;">
+<div class="card card-default">
+	<div class="card card-outline card-primary">
+		<div class="card-header">
+			<h5 class="card-title">
+				<strong><i class="fas fa-book mr-1"></i>
+					Destacados</strong>
+			</h5>
+			<div class="card-tools">
+				<button type="button" class="btn btn-tool" data-card-widget="collapse">
+					<i class="fas fa-minus"></i>
+				</button>
+			</div>
+			
+	</div>
+	
+	<div class="card-body">
+		<a href="/inicio" class="btn btn-primary mb-2">Inicio</a> <a href="/activa" class="btn btn-success mb-2">Información Activa</a> <a href="/lista" class="btn btn-secondary mb-2">Toda la Información</a>
+		<button class="btn btn-primary m-2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Crear</button></div>
+			<table class="table table-striped-columns">
+				<tbody class="table-group-divider">
+				<tr th:each="contenido: ${contenidos}">
+				    <td th:if="${contenido.categoria == 'destacados'}"><img th:src="${contenido.image}" height="100" width="100"/></td>
+				    <td th:if="${contenido.categoria == 'destacados'}" th:text="${contenido.titulo}" />
+				    <td th:if="${contenido.categoria == 'destacados'}" th:text="${contenido.contenido}" />
+				    <td th:if="${contenido.categoria == 'destacados'}"><button th:if="${contenido.categoria == 'destacados'}" class="btn m-1 btn-sm btn-primary" data-bs-toggle="modal" th:data-bs-target="'#modal-editar-' + ${contenido.id}" type="submit">Editar</button>
+					<a th:if="${contenido.categoria == 'destacados'}" th:href="@{/borrar/{id} (id =${contenido.id})}" class="btn m-1 btn-sm btn-danger"/><i class="fa fa-trash"/></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="card-footer"></div>
+</div>
+
+<div th:insert="/layout/fragments_layout/modalCrear"></div>
+<th:Block th:insert="~{/layout/fragments_layout/modal_editar_layout}"></th:Block>
+
+</div>
+
+</div>
+</body>
+</html>
+</body>
+</html>

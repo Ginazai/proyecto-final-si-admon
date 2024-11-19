@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang= "es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout= "http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate= "/layout/layout">
+	<head>
+	<meta charset="UTF-8">
+	<title th:text="${title}"></title>   
+	<th:Block th:insert="/layout/fragments_layout/styles"></th:Block>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css.map">
+    <script type="text/javascript" src="plugins/popper/popper.js"></script>
+    <script type="text/javascript" src="plugins/popper/popper.js.map"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js.map"></script>
+  	<!-- my resources -->
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap/stylesheet.css">
+  	<script type="text/javascript" src="plugins/bootstrap/js/script.js"></script>
+    </head>
+	<body>
+	
+	<div layout:fragment="content">
+	
+	<div class="content justify-content-center" id="load-icon">
+	<div  class="spinner-border text-primary" role="status">
+	  <span class="visually-hidden">Loading...</span>
+	</div>
+	</div>
+		
+	  <div class="cover-container content justify-content-center align-middle" style="height: 75vh;">
+	  	<!-- img class="position-absolute top-100 start-50 translate-middle" width="100%" th:src="@{/images/plants-decor.png}"-->
+	    <img class="fixed-bottom" width="100%" th:src="@{/images/plants-decor.png}">
+	    <div class="position-relative overflow-hidden text-center">
+	    <div class="mx-auto">
+	      <h1 class="display-4 fw-normal">Bienvenido!</h1>
+	      <p class="lead fw-normal">Aquí podrás administrar el contenido de las diversas secciones de la pagina web!</p>
+	      <a class="btn btn-success" th:href="@{/contenidos}">Empezar</a>
+	    </div>
+	    <div class="product-device shadow-sm d-none d-md-block"></div>
+	    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+	  </div>
+	          
+	 </div>
+	</div>
+	</body>
+</html>

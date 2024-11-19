@@ -1,0 +1,138 @@
+<th:block th:fragment="wrapper">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1>Admón. Información</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.container-fluid -->
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<!-- card -->
+			<div class="card card-default">
+				<div class="card card-outline card-primary">
+					<div class="card-header">
+						<h5 class="card-title">
+							<strong><i class="fas fa-book mr-1"></i>
+								Lista de Información</strong>
+						</h5>
+						<div class="card-tools">
+							<button type="button" class="btn btn-tool"
+								data-card-widget="collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+						</div>
+						<!-- /.card-tools -->
+					</div>
+					<!-- /card-body -->
+					<div class="card-body">
+												<a th:href="@{/inicio}" class="btn btn-primary mb-2">Inicio</a> <a
+								th:href="@{/activa}" class="btn btn-success mb-2">Información
+								Activa</a> <a th:href="@{/lista}"
+								class="btn btn-secondary mb-2">Toda la Información</a>
+							<button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+								data-bs-target="#agregarModal">Agregar Información</button>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Título</th>
+										<th>Contenido</th>
+										<th>Activa</th>
+										<th>Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="info : ${informacionList}">
+										<td th:text="${info.id}"></td>
+										<td th:text="${info.titulo}"></td>
+										<td th:text="${info.contenido}"></td>
+										<td th:text="${info.activa}"></td>
+										<td>
+											<button class="btn btn-sm btn-info" data-bs-toggle="modal"
+												th:data-bs-target="'#editarModal-' + ${info.id}">Editar</button>
+											<a th:href="@{eliminar/{id}(id=${info.id})}"
+											class="btn btn-sm btn-danger">Eliminar</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card-footer"></div>
+				</div>
+				<!-- /.card -->
+			</div>
+		</div>
+	</section>
+<!-- Modal para agregar información -->
+<div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/guardar}" method="post">
+                    <div class="form-group">
+                        <label for="titulo">Título:</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" />
+                    </div>
+                    <div class="form-group">
+                        <label for="contenido">Contenido:</label>
+                        <textarea class="form-control" id="contenido" name="contenido"></textarea>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="activa" name="activa" />
+                        <label class="form-check-label" for="activa">Activa</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Información</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin del Modal para agregar información -->
+	
+<!-- Modal para editar información -->
+<div th:each="info : ${informacionList}">
+    <div class="modal fade" th:id="'editarModal-' + ${info.id}" tabindex="-1" role="dialog" aria-labelledby="'editarModalLabel-' + ${info.id}" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:id="'1-' + ${info.id}">Editar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/editar/{id}(id=${info.id})}" method="post">
+                        <div class="form-group">
+                            <label for="titulo">Título:</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" th:value="${info.titulo}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contenido">Contenido:</label>
+                            <textarea class="form-control" id="contenido" name="contenido" th:value="${info.contenido}"></textarea>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="activa" name="activa" th:checked="${info.activa}" />
+                            <label class="form-check-label" for="activa">Activa</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin del Modal para editar información -->
+</th:block>

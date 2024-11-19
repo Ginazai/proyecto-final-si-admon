@@ -1,0 +1,43 @@
+<div th:each="contenido: ${contenidos}">
+<div class="modal fade" th:id="'modal-editar-' + ${contenido.id}" tabindex="-1" aria-labelledby="'editarLabel-' + ${contenido.id}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="'editarLabel-' + ${contenido.id}">Editar contenido</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form th:action="@{/editar/{id} (id=${contenido.id})}" method="post">
+
+          <div class="form-floating m-2 visually-hidden">
+          <select class="form-select" id="categoria" name="categoria">
+              <option th:value="${contenido.categoria}" selected></option>
+            </select>
+            <label for="categoria">Categoria del contenido</label>
+          </div>
+
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="image" name="image" placeholder="image" th:value="${contenido.image}">
+            <label for="image">Image url/location</label>
+          </div>
+
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo" th:value="${contenido.titulo}">
+            <label for="titulo">Titulo</label>
+          </div>
+
+          <div class="form-floating m-2">
+            <textarea class="form-control" placeholder="contenido" id="contenido" name="contenido" style="height: 100px" th:text="${contenido.contenido}"></textarea>
+            <label for="contenido">Contenido</label>
+          </div>
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

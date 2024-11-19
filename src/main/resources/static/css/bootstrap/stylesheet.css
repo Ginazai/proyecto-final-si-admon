@@ -1,0 +1,28 @@
+.content-wrapper{
+	background-color: transparent;
+}
+
+.content-wrapper {
+	background-color: #ffffff; 
+}
+
+.card {
+	overflow: auto;
+}
+
+.content {
+  display: flex;  
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.table>:not(caption)>*>* {
+	background-color:transparent !important;
+}
+
+#load-icon {
+  height:100vh; 
+  width:100%;
+}
