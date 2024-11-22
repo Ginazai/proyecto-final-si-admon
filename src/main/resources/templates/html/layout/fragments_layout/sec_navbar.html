@@ -22,8 +22,8 @@
 	<div class="caption ms-3 d-none d-md-block ">
 	    <h6 class="mb-0 caption-title">
 	    <font class="text-white" style="vertical-align: inherit;" th:text="${Usuario}">Nombre de Usuario</font></h6>
-	    <form>
-	       <button class="btn btn btn-secondary rounded-pill shadow-sm" type="submit">Cerrar Sesión</button>
-	    </form>
+	    <form id="logout-form" name="logout-form" th:action="@{/auth/logout}" method="post"></form>
+	       <button form="logout-form" class="btn btn btn-secondary rounded-pill shadow-sm" type="submit">Cerrar Sesión</button>
+	    
 	</div>
 </nav>

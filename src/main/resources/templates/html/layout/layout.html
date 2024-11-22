@@ -6,13 +6,11 @@
 
 <link rel="shortcut icon" type="image/png" th:href="@{img/cropped-header_logo-1-150x150.png}" size="32x32" />
 
-
 	<title>Admón IEEE | Latina</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/stylesheet.css">
+
 </head>
         
-	<th:Block th:insert="~{/layout/fragments_layout/styles}"></th:Block>
+	<th:Block th:insert="~{/html/layout/fragments_layout/styles}"></th:Block>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css.map">
@@ -21,9 +19,9 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-	<div th:insert="~{/layout/fragments_layout/sec_navbar}"></div>
+	<div th:insert="~{/html/layout/fragments_layout/sec_navbar}"></div>
 	 
-	<div th:insert="~{/layout/fragments_layout/sec_aside}"></div>
+	<div th:insert="~{/html/layout/fragments_layout/sec_aside}"></div>
 	 
 	<div class="content-wrapper bg-white mb-5 p-5"> 
 	
@@ -31,9 +29,7 @@
 	    
 	</div>
 	
-	<th:Block th:insert="~{/layout/fragments_layout/scripts}"></th:Block>
-	
-	<th:Block th:fragment= "scripts"></th:Block>
+	<th:Block th:insert="~{/html/layout/fragments_layout/scripts}"></th:Block>
   
 </div>
 
@@ -42,7 +38,7 @@
     <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js.map"></script>
   	<!-- my resources -->
-  	
-  	<script type="text/javascript" src="plugins/bootstrap/js/script.js"></script>
+  	<link rel="stylesheet" type="text/css" th:href="@{css/assets/stylesheet.css}"/>
+  	<script type="text/javascript" src="css/assets/script.js"></script>
 </body>
 </html>

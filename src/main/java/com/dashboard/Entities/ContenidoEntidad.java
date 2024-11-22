@@ -8,12 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="contenido")
+@Table(name = "contenido")
 public class ContenidoEntidad {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
+	
 	private Long id;
 	
 	@Column(name="categoria")

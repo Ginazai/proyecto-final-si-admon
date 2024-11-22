@@ -25,29 +25,29 @@ public class AppController {
 		this.contenidoServicio = contenidoServicio;
 	}
 	
-	@GetMapping("/")
-	public String App(Model modelo) {
-		System.out.println("Inicio COMPLETADO!"); 
-		modelo.addAttribute("title", "Login");
-		modelo.addAttribute("Usuario", "");
-		return "login_app";
-	}
-	
+//	@GetMapping("/")
+//	public String App(Model modelo) {
+//		System.out.println("Inicio COMPLETADO!"); 
+//		modelo.addAttribute("title", "Login");
+//		modelo.addAttribute("Usuario", "");
+//		return "login_app";
+//	}
+//	
    
-    @PostMapping("/login")
-    public ModelAndView log(Model model) {
-		
-    	System.out.println("Login COMPLETADO!"); 
-        return new ModelAndView("redirect:/inicio");
-    }
-    
+//    @PostMapping("/login")
+//    public ModelAndView log(Model model) {
+//		
+//    	System.out.println("Login COMPLETADO!"); 
+//        return new ModelAndView("redirect:/inicio");
+//    }
+//    
     @GetMapping("/inicio")
     public String inicio(Model model) {
     	System.out.println("Inicio COMPLETADO!");
     	model.addAttribute("title", "Inicio");
-    	model.addAttribute("Usuario", "Rafael Caballero");
+    	//model.addAttribute("Usuario", "Rafael Caballero");
 
-        return "inicio";
+        return "html/inicio";
     }
     
     /***************************************************
