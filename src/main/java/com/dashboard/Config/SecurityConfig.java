@@ -18,13 +18,14 @@ public class SecurityConfig {
 	@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF si no es necesario
+            .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**").permitAll() // Permitir acceso público a auth/*
+                .requestMatchers("/images/**").permitAll()
                 .anyRequest().authenticated()           // Proteger otras rutas
             )
             .formLogin(form -> form
-                    .loginPage("/auth/login")        // Ruta de tu página personalizada de login
+                    .loginPage("/auth/login")        // Ruta personalizada de login
                     .permitAll()                // Permitir acceso sin autenticación
                     .defaultSuccessUrl("/inicio",true) // Redirigir tras autenticación exitosa
                     //.failureUrl("/login?error") // Redirigir si ocurre un error de autenticación

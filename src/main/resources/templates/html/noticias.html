@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang= "es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
-	  xmlns:layout= "http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate= "/layout/layout" style="height: auto;">
+	  xmlns:layout= "http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate= "/html/layout/layout" style="height: auto;">
 <head>
 <meta charset="UTF-8">
 <title th:text="${titulo}"></title>
@@ -12,8 +12,8 @@
     <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js.map"></script>
   	<!-- my resources -->
-  	<link rel="stylesheet" type="text/css" href="css/bootstrap/stylesheet.css">
-  	<script type="text/javascript" src="plugins/bootstrap/js/script.js"></script>
+  	<link rel="stylesheet" type="text/css" href="css/assets/stylesheet.css">
+  	<script type="text/javascript" src="css/assets/script.js"></script>
 </head>
 <body>
 
@@ -61,8 +61,8 @@
 	<div class="card-footer"></div>
 </div>
 
-<div th:insert="/layout/fragments_layout/modalCrear"></div>
-<th:Block th:insert="~{/layout/fragments_layout/modal_editar_layout}"></th:Block>
+<div th:insert="/html/layout/fragments_layout/modalCrear"></div>
+<th:Block th:insert="~{/html/layout/fragments_layout/modal_editar_layout}"></th:Block>
 
 </div>
 

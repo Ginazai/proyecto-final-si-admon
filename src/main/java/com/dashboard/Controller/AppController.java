@@ -2,16 +2,18 @@ package com.dashboard.Controller;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.dashboard.Entities.ContenidoEntidad;
 import com.dashboard.Services.ContenidoServicio;
+import com.dashboard.Services.UserService;
 
 import jakarta.validation.Valid;
 
@@ -19,34 +21,17 @@ import jakarta.validation.Valid;
 public class AppController {
 	
 	private final ContenidoServicio contenidoServicio;
+	//private final UserService userService;	
 	
-	
-	public AppController(ContenidoServicio contenidoServicio) {
+	public AppController(ContenidoServicio contenidoServicio, UserService userService) {
 		this.contenidoServicio = contenidoServicio;
+		//this.userService = userService;
 	}
-	
-//	@GetMapping("/")
-//	public String App(Model modelo) {
-//		System.out.println("Inicio COMPLETADO!"); 
-//		modelo.addAttribute("title", "Login");
-//		modelo.addAttribute("Usuario", "");
-//		return "login_app";
-//	}
-//	
-   
-//    @PostMapping("/login")
-//    public ModelAndView log(Model model) {
-//		
-//    	System.out.println("Login COMPLETADO!"); 
-//        return new ModelAndView("redirect:/inicio");
-//    }
-//    
+	    
     @GetMapping("/inicio")
-    public String inicio(Model model) {
-    	System.out.println("Inicio COMPLETADO!");
+    public String inicio(Model model, Authentication authentication) {
     	model.addAttribute("title", "Inicio");
-    	//model.addAttribute("Usuario", "Rafael Caballero");
-
+    	model.addAttribute("Usuario", authentication.getName());
         return "html/inicio";
     }
     
@@ -83,7 +68,7 @@ public class AppController {
     	List<ContenidoEntidad> contenidos = contenidoServicio.allContenido();
     	model.addAttribute("titulo", "Secciones de la IEEE");
     	model.addAttribute("contenidos", contenidos);
-    	return "contenidos";
+    	return "html/contenidos";
     }
     
     @GetMapping("/destacados")
@@ -91,7 +76,7 @@ public class AppController {
     	List<ContenidoEntidad> content = contenidoServicio.allContenido();
     	model.addAttribute("titulo", "Contenido Destacado");
     	model.addAttribute("contenidos", content);
-    	return "destacados";
+    	return "html/destacados";
 	}
     
     @GetMapping("/noticias")
@@ -99,14 +84,14 @@ public class AppController {
     	List<ContenidoEntidad> content = contenidoServicio.allContenido();
     	model.addAttribute("titulo", "Noticias");
     	model.addAttribute("contenidos", content);
-    	return "noticias";
+    	return "html/noticias";
     }
     
     @GetMapping("/eventos")
     public String eventos(Model model) {
     	List<ContenidoEntidad> eventos = contenidoServicio.allContenido();
     	model.addAttribute("contenidos", eventos);
-    	return "eventos";
+    	return "html/eventos";
     }
     
     @GetMapping("/junta")
@@ -114,7 +99,7 @@ public class AppController {
     	List<ContenidoEntidad> content = contenidoServicio.allContenido();
     	model.addAttribute("titulo", "Junta Directiva");
     	model.addAttribute("contenidos", content);
-    	return "junta";
+    	return "html/junta";
     }
     
     @GetMapping("/beneficios")
@@ -122,14 +107,14 @@ public class AppController {
     	List<ContenidoEntidad> content = contenidoServicio.allContenido();
     	model.addAttribute("titulo", "Beneficios");
     	model.addAttribute("contenidos", content);
-		return "beneficios";
+		return "html/beneficios";
 	}
     
     @GetMapping("/sobre")
     public String sobreNosotros(Model model) {
     	List<ContenidoEntidad> sobreNosotros = contenidoServicio.allContenido();
     	model.addAttribute("contenidos", sobreNosotros);
-    	return "sobre";
+    	return "html/sobre";
     }
     
 }
