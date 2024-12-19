@@ -11,14 +11,14 @@
         <form th:action="@{/editar/{id} (id=${contenido.id})}" method="post">
         
         <div class="form-floating m-2 visually-hidden">
-          <select class="form-select" id="categoria" name="categoria">
+          <select class="form-select" id="categoria" name="categoria" required>
               <option th:value="${contenido.categoria}" selected></option>
             </select>
             <label for="categoria">Categoria del contenido</label>
           </div>
 
           <div class="form-floating m-2">
-            <textarea class="form-control" placeholder="contenido" id="contenido" name="contenido" style="height: 100px" th:text="${contenido.contenido}"></textarea>
+            <textarea class="form-control" placeholder="contenido" id="contenido" name="contenido" style="height: 100px" th:text="${contenido.contenido}" required></textarea>
             <label for="contenido">Contenido</label>
           </div>
 
